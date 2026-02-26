@@ -84,20 +84,25 @@ button:hover {
 #contact-us-form fieldset input, #contact-us-form fieldset textarea{
     display: block;
     margin: .3rem;
+    width: 100%;
 }
 #contact-us-form fieldset label{
     margin-bottom: 1rem;
     margin-left: 0;
 }
-#contact-us-form fieldset{
+#contact-us-form {
     display: block;
     margin-top: 2rem;
+    max-width: 600px;
+    margin: auto;
 }
 
 #contact-us-form button{
     display: block;
     margin-left: 0;
 }
+
+
 
 @media screen and (max-width: 600px) {
     /* Making the main 100% so it looks good on mobile */

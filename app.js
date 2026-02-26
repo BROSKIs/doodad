@@ -23,16 +23,20 @@ app.get("/contact", (req, res)=>{
     res.render("contact");
 });
 
-app.get("/contact-submited", (req, res)=>{
+app.post("/contact-submited", (req, res)=>{
     const contact = {
-        name: req.query.name,
-        email: req.query.email,
-        message: req.query.message
+        name: req.body.name,
+        email: req.body.email,
+        message: req.body.message
     };
 
     contacts.push(contact);
 
     res.render("conf-contact");
+})
+
+app.get("/admin", (req, res)=>{
+    res.send(contacts);
 })
 
 app.listen(PORT, ()=>{
