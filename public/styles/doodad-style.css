@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+    font-family: "Segoe UI", Roboto, sans-serif
+}
+
+header {
+    background-color: #3287e3;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem 0 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+}
+
+a {
+    
+}

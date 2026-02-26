@@ -3,6 +3,7 @@ import express from "express"
 const app = express();
 
 app.set("view engine", "ejs");
+app.use(express.static('public'));
 
 const PORT = 3005;
 
