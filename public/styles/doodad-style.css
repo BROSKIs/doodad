@@ -22,6 +22,7 @@ header {
 nav {
     display: flex;
     justify-content: space-evenly;
+    gap: 10px;
     width: 45%;
 }
 
@@ -73,7 +74,46 @@ button:hover {
 }
 
 .err {
-    font-size: 24px;
+    /* font-size: 24px; */
     color: darkred;
     display: none;
+}
+
+/* CONTACT US STYLES */
+
+#contact-us-form fieldset input, #contact-us-form fieldset textarea{
+    display: block;
+    margin: .3rem;
+}
+#contact-us-form fieldset label{
+    margin-bottom: 1rem;
+    margin-left: 0;
+}
+#contact-us-form fieldset{
+    display: block;
+    margin-top: 2rem;
+}
+
+#contact-us-form button{
+    display: block;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 600px) {
+    /* Making the main 100% so it looks good on mobile */
+    main{
+        width: 100%;
+        margin: 0;
+    }
+    /* Feel free to change */
+    /* FIX NAVBAR mobile */
+    header nav a {
+        display: block;
+        margin-bottom: 1rem;
+        text-decoration: underline;
+        font-size: 16px;
+    }
+     header nav {
+        display: block;
+    }
 }
