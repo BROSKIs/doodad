@@ -5,14 +5,14 @@
 body {
     margin: 0;
     background-color: white;
-    font-family: "Segoe UI", Roboto, sans-serif
+    font-family: "Segoe UI", Roboto, sans-serif;
 }
 
 header {
     background-color: #3287e3;
     display: flex;
     justify-content: space-evenly;
-    padding: 2rem 0 2rem;
+    padding: 1rem 0 1.5rem;
 }
 
 nav {
@@ -22,5 +22,15 @@ nav {
 }
 
 a {
-    
+    font-size: 32px;
+    color: white;
+}
+
+main {
+    width: 70%;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
 }
