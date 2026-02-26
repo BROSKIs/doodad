@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #3287e3;
+}
+
 body {
     margin: 0;
     background-color: white;
@@ -9,7 +13,7 @@ body {
 }
 
 header {
-    background-color: #3287e3;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: space-evenly;
     padding: 1rem 0 1.5rem;
@@ -18,12 +22,13 @@ header {
 nav {
     display: flex;
     justify-content: space-evenly;
-    width: 40%;
+    width: 45%;
 }
 
 a {
     font-size: 32px;
     color: white;
+    text-decoration: none;
 }
 
 main {
@@ -33,4 +38,42 @@ main {
 
 h1 {
     text-align: center;
+}
+
+.emailpass {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 20px;
+    padding: 1rem 0 1rem 1rem;
+}
+
+input {
+    border: 1px solid lightslategrey;
+    border-radius: 4px;
+    width: 20rem;
+    font-size: 20px;
+}
+
+button {
+    background-color: var(--primary-color);
+    font-size: 24px;
+    padding: 8px 24px 8px 24px;
+    border: none;
+    margin: 2rem 0 0 4rem;
+    color: white;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #78b1ed;
+    cursor: pointer;
+}
+
+.err {
+    font-size: 24px;
+    color: darkred;
+    display: none;
 }
