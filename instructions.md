@@ -6,7 +6,7 @@
 3. Verify functionality on DigitalOcean. (you are hosting)
 
 ## Sam
-1. Create universal navigation bar. Make sure the links work. Ask for help if you need it.
+1. Create universal navigation bar. Make sure the links work. Ask for help if you need it. DONE
 2. Make sure submissions from form are saved in **temporary memory array**. `(const login_info = [])` DONE
 3. Include ALL necessary data. DONE
 
