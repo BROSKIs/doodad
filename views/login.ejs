@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doodads - Log In</title>
-    <link rel="stylesheet" href="styles/doodad-style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="/" class="nav-links">Feed</a>
-            <a href="/" class="nav-links">Create Post</a>
-            <a href="/login" class="nav-links">Account</a>
-        </nav>
-    </header>
+    <link rel="stylesheet" href="styles/doodad-style.css" />
+  </head>
+  <body>
+    <header><%- include('partials/nav') %></header>
 
     <form id="login-form" action="#" method="post">
-        <fieldset class="emailpass">
-            <label for="email">Email:
-                <input type="email">
-            </label>
-            <label for="pass">Password:
-                <input type="password">
-            </label>
-        </fieldset>
-        <button type="submit" id="login-button" name="login-button">Log In</button>
+      <fieldset class="emailpass">
+        <label for="email"
+          >Email:
+          <input type="email" />
+        </label>
+        <label for="pass"
+          >Password:
+          <input type="password" />
+        </label>
+      </fieldset>
+      <button type="submit" id="login-button" name="login-button">
+        Log In
+      </button>
     </form>
-</body>
+  </body>
 </html>

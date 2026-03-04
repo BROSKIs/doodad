@@ -23,7 +23,7 @@ app.get("/contact", (req, res)=>{
     res.render("contact");
 });
 
-app.post("/contact-submited", (req, res)=>{
+app.post("/contact-submitted", (req, res)=>{
     const contact = {
         name: req.body.name,
         email: req.body.email,
