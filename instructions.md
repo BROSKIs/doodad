@@ -16,3 +16,5 @@
 3. Responsiveness check.
 4. Debug Sam and Pasha's code.
 5. Commenting for clarity.
+
+maybe improve CSS....
