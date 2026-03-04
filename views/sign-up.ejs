@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doodads - Log In</title>
+    <link rel="stylesheet" href="styles/doodad-style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="nav-links">Feed</a>
+            <a href="/" class="nav-links">Create Post</a>
+            <a href="/login" class="nav-links">Account</a>
+        </nav>
+    </header>
+
+     <form action="/new-account" method="post">
+        <fieldset>
+            <legend>Sign Up</legend>
+            <label for="fname"> First Name:
+                <input type="text" id="fname" name="fname">
+            </label>
+            <label for="lname">Last Name
+                <input type="text" id="lname" name="lname">
+            </label>
+            <label for="email">Email:
+                <input type="email" id="email" name="email">
+            </label>
+            <label for="pass">Password:
+                <input type="password" id="pass" name="pass">
+            </label>
+        </fieldset>
+        <button>Sign Up</button>
+     </form>
+</body>
+</html>

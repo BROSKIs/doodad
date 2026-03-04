@@ -49,6 +49,7 @@ h1 {
 label {
     font-size: 20px;
     padding: 1rem 0 1rem 1rem;
+    display: block;
 }
 
 input {
@@ -63,7 +64,7 @@ button {
     font-size: 24px;
     padding: 8px 24px 8px 24px;
     border: none;
-    margin: 2rem 0 0 4rem;
+    margin: 2rem 0;
     color: white;
     border-radius: 4px;
 }
@@ -100,6 +101,26 @@ button:hover {
 #contact-us-form button{
     display: block;
     margin-left: 0;
+}
+
+/* Form styles */
+fieldset{
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+}
+
+form{
+    display: block;
+    width: 100%;
+    max-width: 450;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+/* signup confirmation page */
+#login-link{
+    color: #3287e3;
 }
 
 
