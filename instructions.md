@@ -1,8 +1,8 @@
 ## to do
 
 ## Pasha
-1. Create two routes. Recommended: `/ (home)`, `/form`, `/confirmation`, `/orders` etc. (we technically have some, but add like 1 more)
-2. Enstate EJS views. (`render`)
+1. Create two routes. Recommended: `/ (home)`, `/form`, `/confirmation`, `/orders` etc. (we technically have some, but add like 1 more) DONE
+2. Enstate EJS views. (`render`) DONE
 3. Verify functionality on DigitalOcean. (you are hosting)
 
 ## Sam
