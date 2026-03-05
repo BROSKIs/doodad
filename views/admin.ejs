@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+
+    <!-- Scripts -->
+    <script src="//code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="//cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+    <script src="//cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.min.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="//cdn.datatables.net/2.3.7/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css">
+</head>
+<body>
+    <h1>User</h1>
+    <table id="user-table" class="display">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>                             
+            </tr>
+        </thead>
+        <tbody>
+    <% users.forEach(user => { %>
+        <tr>
+            <td><%= user.fname %> <%= user.lname %></td>
+            <td><%= user.email %></td>
+            <td><%= user.pass %></td>
+        </tr>
+    <% }) %>
+        </tbody>    
+    </table>
+
+    <script>
+        new DataTable('#user-table', {
+            responsive: true
+        });
+    </script>
+</body>
+</html>

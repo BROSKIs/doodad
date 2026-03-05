@@ -28,6 +28,7 @@ app.get("/sign-up", (req, res)=>{
 app.get("/contact", (req, res)=>{
     res.render("contact");
 });
+
 //NOT IN NAVBAR
 app.post("/new-account", (req,res)=>{
     const user = {
@@ -54,8 +55,12 @@ app.post("/contact-submitted", (req, res)=>{
     res.render("conf-contact");
 })
 
-app.get("/admin", (req, res)=>{
+app.get("/admin-contact", (req, res)=>{
     res.send(contacts);
+});
+
+app.get("/admin-users", (req, res)=>{
+    res.render('admin', { users });
 });
 
 app.listen(PORT, ()=>{

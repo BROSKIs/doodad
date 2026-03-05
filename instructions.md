@@ -11,7 +11,7 @@
 3. ~~Include ALL necessary data.~~
 
 ## KJ
-1. ~~HTML validation~~ AND submission validation
+1. ~~HTML validation AND submission validation~~
 2. Format data on submission page. DONE ISH
 3. Responsiveness check.
 4. Debug Sam and Pasha's code.
