@@ -9,7 +9,7 @@
   <body>
     <header><%- include('partials/nav') %></header>
 
-    <form id="login-form" action="#" method="post">
+    <form id="login-form" action="/logged-in" method="post">
       <fieldset class="emailpass">
         <label for="email"
           >Email:
@@ -24,5 +24,6 @@
         Log In
       </button>
     </form>
+    <p>Don't have an account?<a href="/sign-up" id="login-link">Sign up!</a></p>
   </body>
 </html>

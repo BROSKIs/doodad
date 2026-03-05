@@ -55,6 +55,10 @@ app.post("/contact-submitted", (req, res)=>{
     res.render("conf-contact");
 })
 
+app.post("/logged-in", (req, res) => {
+    res.render("home");
+});
+
 app.get("/admin-contact", (req, res)=>{
     res.send(contacts);
 });
