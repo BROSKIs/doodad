@@ -12,8 +12,8 @@
 
 ## KJ
 1. ~~HTML validation AND submission validation~~
-2. Format data on submission page. DONE ISH
-3. Responsiveness check.
-4. Debug Sam and Pasha's code.
-5. Commenting for clarity.
+2. ~~Format data on submission page.~~
+3. ~~Responsiveness check.~~
+4. ~~Debug Sam and Pasha's code.~~
+5. ~~Commenting for clarity.~~
 6. CSS polishing pass
