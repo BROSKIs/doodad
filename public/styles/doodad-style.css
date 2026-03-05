@@ -82,48 +82,33 @@ button:hover {
 
 /* CONTACT US STYLES */
 
-#contact-us-form fieldset input, #contact-us-form fieldset textarea{
-    display: block;
-    margin: .3rem;
-    width: 100%;
-}
-#contact-us-form fieldset label{
-    margin-bottom: 1rem;
-    margin-left: 0;
-}
-#contact-us-form {
-    display: block;
-    margin-top: 2rem;
-    max-width: 600px;
+#contact-us-form fieldset {
+    margin: 0.5rem 1rem 0.5rem 1rem;
+    display: flex;
+    width: 30%;
     margin: auto;
+    flex-direction: column;
 }
 
-#contact-us-form button{
-    display: block;
-    margin-left: 0;
+#contact-us-form label input {
+    display: flex;
+    justify-content: space-between;
 }
 
-/* Form styles */
-fieldset{
-    display: block;
-    width: 400px;
-    margin: 0 auto;
+#contact-us-form textarea {
+    line-height: 3;
+    width: 90%;
 }
 
-form{
+#contact-us-form button {
     display: block;
-    width: 100%;
-    max-width: 450;
-    text-align: center;
-    margin: 1rem auto;
+    margin: 2rem auto;
 }
 
 /* signup confirmation page */
 #login-link{
     color: #3287e3;
 }
-
-
 
 @media screen and (max-width: 600px) {
     /* Making the main 100% so it looks good on mobile */
@@ -139,7 +124,7 @@ form{
         text-decoration: underline;
         font-size: 16px;
     }
-     header nav {
+    header nav {
         display: block;
     }
 }

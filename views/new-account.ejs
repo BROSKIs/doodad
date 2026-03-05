@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="styles/doodad-style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/" class="nav-links">Feed</a>
-            <a href="/" class="nav-links">Create Post</a>
-            <a href="/login" class="nav-links">Account</a>
-        </nav>
-    </header>
+    <header><%- include('partials/nav') %></header>
     <h1>Hello <%= user.fname %> ,</h1>
     <h1>Thank you for creating your account!</h1>
     <p>Your email is <%= user.email %> . Please contact us if you forget your password.</p>

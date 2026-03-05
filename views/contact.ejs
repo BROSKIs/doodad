@@ -7,26 +7,27 @@
     <script src="js/contact-val.js" defer></script>
     <title>Doodads - Contact Us</title>
 </head>
+
 <body>
-    <header>
-        <%- include('partials/nav') %>
-    </header>
-        <main>
-            <form id="contact-us-form" action="/contact-submitted" method="post">
-                <fieldset>
-                    <legend>Contact Us</legend>
-                    <label for="name">Name: <span class="err" id="name-err">Please enter your name</span>
-                        <input type="text" id="name" name="name">
-                    </label>
-                    <label for="email">Email: <span class="err" id="email-err">Please enter your email</span>
-                        <input type="email" id="email" name="email">
-                    </label>
-                    <label for="message">Message: <span class="err" id="m-err">Please enter a message</span>
-                        <textarea name="message" id="message"></textarea>
-                    </label>
-                </fieldset>
-                <button type="submit">Submit</button>
-            </form>
-        </main>
+<header>
+    <%- include('partials/nav') %>
+</header>
+<main>
+    <form id="contact-us-form" action="/contact-submitted" method="post">
+        <fieldset>
+            <legend>Contact Us</legend>
+            <label for="name">Name: <span class="err" id="name-err">Please enter your name</span>
+                <input type="text" id="name" name="name">
+            </label>
+            <label for="email">Email: <span class="err" id="email-err">Please enter your email</span>
+                <input type="email" id="email" name="email">
+            </label>
+            <label for="message">Message:<br> <span class="err" id="m-err">Please enter a message</span>
+                <textarea name="message" id="message"></textarea>
+            </label>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+</main>
 </body>
 </html>
