@@ -1,16 +1,16 @@
 import express from "express"
-
 const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static('public'));
-
 app.use(express.urlencoded({ extended: true}));
 
 const PORT = 3005;
 
+// internal storage for contacts
 const contacts = [];
 
+// interal storage for users
 const users = []
 
 // home page (nav)
@@ -66,7 +66,7 @@ app.post("/logged-in", (req, res) => {
 
 // access admin page for contacts
 app.get("/admin-contact", (req, res)=>{
-    res.send(contacts);
+    res.render('admin-contacts', { contacts });
 });
 
 // access admin page for users

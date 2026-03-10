@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration for Users</title>
+    <title>Administration for Contacts</title>
 
     <!-- Scripts -->
     <script src="//code.jquery.com/jquery-3.7.1.js"></script>
@@ -15,28 +15,28 @@
     <link rel="stylesheet" href="//cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css">
 </head>
 <body>
-    <h1>User</h1>
-    <table id="user-table" class="display">
+    <h1>Contact</h1>
+    <table id="contact-table" class="display">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Password</th>                             
+                <th>Message</th>                             
             </tr>
         </thead>
         <tbody>
-    <% users.forEach(user => { %>
+    <% contacts.forEach(contact => { %>
         <tr>
-            <td><%= user.fname %> <%= user.lname %></td>
-            <td><%= user.email %></td>
-            <td><%= user.pass %></td>
+            <td><%= contact.name %></td>
+            <td><%= contact.email %></td>
+            <td><%= contact.message %></td>
         </tr>
     <% }) %>
         </tbody>    
     </table>
 
     <script>
-        new DataTable('#user-table', {
+        new DataTable('#contact-table', {
             responsive: true
         });
     </script>
