@@ -21,7 +21,7 @@ function validate(){
     return isValid;
 }
 
-//function to clear errors
+// function to clear errors
 function clearErrors(){
     let errors = document.getElementsByClassName("err");
     for(let i=0; i<errors.length; i++){
@@ -29,7 +29,7 @@ function clearErrors(){
     }
 }
 
-// email validator
+// function to validate emails. Must include "@ and ."
 function valid(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(email);
