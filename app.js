@@ -34,7 +34,7 @@ app.get("/", (req,res)=>{
 // database testing route for debugging
 app.get('/db-test', async (req, res) => {
     try {
-        const users = await pool.query('SELECT * FROM users');
+        const users = await pool.query('SELECT * FROM login');
         res.send(users[0]);
     } catch (err) {
         console.error('Database error:', err);
@@ -58,16 +58,30 @@ app.get("/contact", (req, res)=>{
 });
 
 // post-sign-up page
-app.post("/new-account", (req,res)=>{
-    const user = {
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        password: req.body.pass
-    }
-    users.push(user);
+app.post("/new-account", async (req, res) => {
+    try {
+        // get user input
+        const user = req.body;
+        console.log('New user signed up:', user);
 
-    res.render("new-account", { user });
+        // SQL injection? never heard of it.
+        const sql = `INSERT INTO login(fname, lname, email, password) VALUES (?, ?, ?, ?);`;
+
+        // includes some preventative measures against null values.
+        const params = [
+            user.fname || '',
+            user.lname || '',
+            user.email || '',
+            user.password || ''
+        ];
+
+        const result = await pool.execute(sql, params);
+        console.log('User information saved with ID:', result[0].insertId);
+        res.render("new-account", { user });
+    } catch (err) {
+        console.error('Error saving user:', err);
+        res.status(500).send('Sorry! We failed to save your information. Please try signing up again.');
+    }
 });
 
 // post-contact page
