@@ -72,7 +72,7 @@ app.post("/new-account", async (req, res) => {
             user.fname || '',
             user.lname || '',
             user.email || '',
-            user.password || ''
+            user.pass || ''
         ];
 
         const result = await pool.execute(sql, params);
