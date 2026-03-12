@@ -19,6 +19,11 @@ header {
   padding: 1rem 0 1.5rem;
 }
 
+img {
+  width: 3rem;
+  height: 3rem;
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -26,12 +31,26 @@ nav {
   gap: 10px;
   width: 70%;
   white-space: nowrap;
+  list-style: none;
 }
 
 a {
-  font-size: 32px;
+  font-size: 2rem;
   color: white;
   text-decoration: none;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav ul a {
+  font-size: 1rem;
+}
+
+li {
+  list-style: none;
 }
 
 main {
@@ -112,7 +131,7 @@ button:hover {
   color: #3287e3;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 760px) {
   /* Making the main 100% so it looks good on mobile */
   main {
     width: 100%;
