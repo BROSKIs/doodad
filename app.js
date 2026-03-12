@@ -111,7 +111,7 @@ app.get("/admin-contact", (req, res)=>{
 app.get("/admin-users", async (req, res)=>{
     try {
         // fetch all users
-        const [users] = await pool.query('SELECT * FROM users ORDER BY timestamp DESC');
+        const [users] = await pool.query('SELECT * FROM login ORDER BY timestamp DESC');
         // render page
         res.render('admin-users', { users });
     } catch (err) {
