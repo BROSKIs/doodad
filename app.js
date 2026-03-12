@@ -11,7 +11,10 @@ const PORT = 3005;
 const contacts = [];
 
 // interal storage for users
-const users = []
+const users = [];
+
+//intermal storage for items
+const items = [];
 
 // home page (nav)
 app.get("/", (req,res)=>{
@@ -73,7 +76,34 @@ app.get("/admin-contact", (req, res)=>{
 app.get("/admin-users", (req, res)=>{
     res.render('admin-users', { users });
 });
+//ITEM CREATIONG
+app.get("/create-item", (req, res)=>{
+    res.render("create_item");
+});
+app.post("/item-comfirmation", (req, res)=>{
+
+    const item = {
+        img: req.body.img,
+        name: req.body.name,
+        price: req.body.price,
+        desc: req.body.desc,
+        timestamp: new Date()
+    }
+
+    items.push(item);
+
+    res.render("item-conf", { item });
+})
+
+app.get("/item", (req, res)=>{
+    const id = req.query.id;
+    const item = items[id];
+    res.render("item", { item },);
+});
+
 
 app.listen(PORT, ()=>{
     console.log(`Your website is running at http://localhost:${PORT}`);
 });
+
+
