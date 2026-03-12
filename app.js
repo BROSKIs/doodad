@@ -1,5 +1,9 @@
 import express from "express"
+import mysql2 from 'mysql2';
+import dotenv from 'dotenv';
 const app = express();
+
+dotenv.config();
 
 app.set("view engine", "ejs");
 app.use(express.static('public'));
@@ -13,9 +17,29 @@ const contacts = [];
 // interal storage for users
 const users = []
 
+// secret connection pool for secret databases
+const pool = mysql2.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
+}).promise();
+
 // home page (nav)
 app.get("/", (req,res)=>{
     res.render("home");
+});
+
+// database testing route for debugging
+app.get('/db-test', async (req, res) => {
+    try {
+        const users = await pool.query('SELECT * FROM login');
+        res.send(users[0]);
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Database error: ' + err.message); 
+    }
 });
 
 // login page (nav)
@@ -34,16 +58,30 @@ app.get("/contact", (req, res)=>{
 });
 
 // post-sign-up page
-app.post("/new-account", (req,res)=>{
-    const user = {
-        fname: req.body.fname,
-        lname: req.body.fname,
-        email: req.body.email,
-        password: req.body.pass
-    }
-    users.push(user);
+app.post("/new-account", async (req, res) => {
+    try {
+        // get user input
+        const user = req.body;
+        console.log('New user signed up:', user);
 
-    res.render("new-account", { user });
+        // SQL injection? never heard of it.
+        const sql = `INSERT INTO login(fname, lname, email, password) VALUES (?, ?, ?, ?);`;
+
+        // includes some preventative measures against null values.
+        const params = [
+            user.fname || '',
+            user.lname || '',
+            user.email || '',
+            user.password || ''
+        ];
+
+        const result = await pool.execute(sql, params);
+        console.log('User information saved with ID:', result[0].insertId);
+        res.render("new-account", { user });
+    } catch (err) {
+        console.error('Error saving user:', err);
+        res.status(500).send('Sorry! We failed to save your information. Please try signing up again.');
+    }
 });
 
 // post-contact page
@@ -70,8 +108,17 @@ app.get("/admin-contact", (req, res)=>{
 });
 
 // access admin page for users
-app.get("/admin-users", (req, res)=>{
-    res.render('admin-users', { users });
+app.get("/admin-users", async (req, res)=>{
+    try {
+        // fetch all users
+        const [users] = await pool.query('SELECT * FROM users ORDER BY timestamp DESC');
+        // render page
+        res.render('admin-users', { users });
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Error loading orders: ' + err.message);
+    }
+    
 });
 
 app.listen(PORT, ()=>{
