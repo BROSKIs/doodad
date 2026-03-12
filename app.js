@@ -127,25 +127,45 @@ app.get("/admin-users", async (req, res)=>{
 app.get("/create-item", (req, res)=>{
     res.render("create_item");
 });
-app.post("/item-comfirmation", (req, res)=>{
+app.post("/item-comfirmation", async (req, res)=>{
+    try {
+        // get user input
+        const itom = req.body;
 
-    const item = {
-        img: req.body.img,
-        name: req.body.name,
-        price: req.body.price,
-        desc: req.body.desc,
-        timestamp: new Date()
+        // SQL
+        const sql = `INSERT INTO items(name, img, email, price, item_desc) VALUES (?, ?, ?, ?, ?);`;
+
+        // includes some preventative measures against null values.
+        const params = [
+            itom.name || '',
+            itom.img || '',
+            itom.email || '',
+            itom.price || '',
+            itom.desc || ''
+        ];
+
+        const result = await pool.execute(sql, params);
+        res.render("item-conf", { item: itom });
+    } catch (err) {
+        console.error('Error saving user:', err);
+        res.status(500).send('Sorry! We failed to save your information. Please try signing up again.');
     }
-
-    items.push(item);
-
-    res.render("item-conf", { item });
 })
 
-app.get("/item", (req, res)=>{
+app.get("/item", async (req, res)=>{
     const id = req.query.id;
-    const item = items[id];
-    res.render("item", { item },);
+    try {
+        // fetch all users
+        const sql = 'SELECT * FROM items WHERE id = ' + id;
+        const [item] = await pool.query(sql);
+        console.log(item);
+        // render page
+        res.render("item", { item: item[0] },);
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Error loading item: ' + err.message);
+    }
+    
 });
 
 
