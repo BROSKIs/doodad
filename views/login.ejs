@@ -4,27 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doodads - Log In</title>
-    <link rel="stylesheet" href="styles/doodad-style.css" />
+    <link rel="stylesheet" href="styles/doodad-style.css"/>
   </head>
   <body>
     <!-- Navigation Bar -->
     <header><%- include('partials/nav') %></header>
-
+    <main>
     <form id="login-form" action="/logged-in" method="post">
       <fieldset class="emailpass">
-        <label for="email"
-          >Email:
-          <input type="email" id="email"/>
+        <label for="email">
+        Email:
+        <input type="email" id="email"/>
         </label>
-        <label for="password"
-          >Password:
-          <input type="password" id="password"/>
+        <label for="password">
+        Password:
+        <input type="password" id="password"/>
         </label>
       </fieldset>
       <button type="submit" id="login-button" name="login-button">
-        Log In
+      Log In
       </button>
     </form>
-    <p>Don't have an account?<a href="/sign-up" id="login-link">Sign up!</a></p>
+    <p>Don't have an account? <a href="/sign-up" id="login-link">Sign up!</a></p>
+  </main>
   </body>
 </html>
