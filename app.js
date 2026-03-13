@@ -30,8 +30,17 @@ const pool = mysql2.createPool({
 }).promise();
 
 // home page (nav)
-app.get("/", (req,res)=>{
-    res.render("home");
+app.get("/", async (req,res)=>{
+    try {
+        // fetch all users
+        const sql = 'SELECT * FROM items';
+        const [items_feed] = await pool.query(sql);
+        // render page
+        res.render("home", { items_feed },);
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Error loading item: ' + err.message);
+    }
 });
 
 // database testing route for debugging
@@ -158,7 +167,6 @@ app.get("/item", async (req, res)=>{
         // fetch all users
         const sql = 'SELECT * FROM items WHERE id = ' + id;
         const [item] = await pool.query(sql);
-        console.log(item);
         // render page
         res.render("item", { item: item[0] },);
     } catch (err) {

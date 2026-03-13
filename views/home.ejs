@@ -16,6 +16,17 @@
       <h1>Welcome to Doodads.com, the best online collectable auction!</h1>
       <!-- DELETE LATER -->
       <span>For Tina: the form is on contact us page (delete later)</span>
+      <!-- FEED -->
+       <!-- Take out the in line styles later -->
+      <div>
+        <h1>Listings:</h1>
+        <ul>
+          <% items_feed.forEach(item =>{ %>
+            <% const link = "/item?id=" + item.id; %>
+            <a style="color: black; display: block;" href=<%= link %> ><%= item.name %></a>
+          <% }); %>
+        </ul>
+      </div>
     </main>
   </body>
 </html>

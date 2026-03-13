@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doodads - Item #</title>
+    <title>Doodads - <%= item.name %></title>
+    <link rel="stylesheet" href="styles/doodad-style.css"/>
+    <link rel="icon" href="images/Blue_square_D.PNG">
 </head>
 <body>
-    <!-- {
-    "img": "sdfdsfs",
-    "name": "fsdfsdfsdf",
-    "price": "20",
-    "desc": "sdfssdvs",
-    "timestamp": "2026-03-12T05:43:11.650Z"
-    } -->
+    <!-- Navigation Bar -->
+      <%- include('partials/nav') %>
+
     <img src=<%= item.img %> alt="main picture">
-    <h2><% item.name %></h2>
+    <br>
+    <h2><%= item.name %></h2>
     <h1>Price: <%= item.price %></h1>
     
     <p>Desctiption</p>
-    <p><%= item.desc %></p>
+    <p><%= item.item_desc %></p>
+
+    <!-- ADD A BUY BUTTON -->
     
 </body>
 </html>
