@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="styles/doodad-style.css" />
+    <link rel="stylesheet" href="styles/doodad-style.css">
     <title>Doodads - Item Posted</title>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <header><%- include('partials/nav') %></header>
+    <header>
+        <%- include('partials/nav') %>
+    </header>
     <h1>Item Posted!</h1>
 
     <!-- const item = {
@@ -20,7 +22,7 @@
         timestamp: new Date()
     } -->
     <div>
-        <img src=<%= item.img %> alt="item imgage">
+        <img src= <%= item.img %> alt="item imgage">
         <p><%= item.name %></p>
         <p><%= item.price %></p>
         <br>
