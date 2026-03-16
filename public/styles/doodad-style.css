@@ -19,7 +19,7 @@ header {
   padding: 1rem 0 1.5rem;
 }
 
-img {
+.nav-img {
   width: 3rem;
   height: 3rem;
 }
@@ -58,9 +58,6 @@ main {
   margin: auto;
 }
 
-h1 {
-  text-align: center;
-}
 
 .emailpass {
   display: flex;
@@ -129,6 +126,37 @@ button:hover {
 /* signup confirmation page */
 #login-link {
   color: #3287e3;
+}
+
+/* Item Page */
+.listing {
+  display: block;
+  max-width: 800px;
+  margin: auto;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.showcase {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+.showcase img {
+  width: 100%;
+  height: auto;
+}
+
+.listing-price {
+  color: green;
+  margin: 0 auto;
+}
+
+.listing h2 {
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 760px) {

@@ -23,7 +23,7 @@
 		<ul>
 			<% items_feed.forEach(item =>{ %>
 			<% const link = "/item?id=" + item.id; %>
-			<a style="color: black; display: block;" href=<% link %>> <%= item.name %></a>
+			<a style="color: black; display: block;" href=<%= link %>> <%= item.name %></a>
 			<% }); %>
 		</ul>
 	</div>
