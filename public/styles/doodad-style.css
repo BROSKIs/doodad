@@ -129,6 +129,7 @@ button:hover {
 }
 
 /* Item Page */
+/* Item boc */
 .listing {
   display: block;
   max-width: 800px;
@@ -136,7 +137,7 @@ button:hover {
   border: 1px solid black;
   padding: 1rem;
 }
-
+/* Picture box */
 .showcase {
   display: block;
   margin: 0 auto;
@@ -144,19 +145,40 @@ button:hover {
   max-height: 600px;
   overflow: hidden;
 }
-
+/* Item Picture */
 .showcase img {
   width: 100%;
   height: auto;
 }
-
+/* Price */
 .listing-price {
   color: green;
   margin: 0 auto;
 }
-
+/* Margin udjustment */
 .listing h2 {
   margin: 0 auto;
+}
+/* Listing button */
+.listing a button {
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+/* SOLD PAGE */
+.sold-text {
+  color: red;
+}
+.showcase-sold {
+  width: 50%;
+}
+/* feed */
+.feed {
+  /* STYLE LATER */
+  /* MAKE IT A GRID */
+}
+/* Listing Tile STYLE LATER */
+.listing-tile {
+  border: 1px solid black;
 }
 
 @media screen and (max-width: 760px) {

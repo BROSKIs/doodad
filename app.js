@@ -162,7 +162,24 @@ app.get("/item", async (req, res)=>{
         console.error('Database error:', err);
         res.status(500).send('Error loading item: ' + err.message);
     }
-    
+});
+
+// sold listing
+app.get("/item-purchesed", async (req, res)=>{
+    const id = req.query.id;
+    try {
+        // mark listin as sold on the back end
+        const sqlone = 'UPDATE items SET sold = TRUE WHERE id = ' + id + ';'
+        const itemone = await pool.query(sqlone);
+        // fetch all listings with ID
+        const sql = 'SELECT * FROM items WHERE id = ' + id;
+        const [item] = await pool.query(sql);
+        // render page
+        res.render("sold", { item: item[0] },);
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Error loading item: ' + err.message);
+    }
 });
 
 

@@ -15,19 +15,14 @@
     
 
     <div class="listing">
-      <div class="showcase">
+      <div class="showcase showcase-sold">
         <img src=<%= item.img %> alt="main picture">
       </div>
       <br>
-      <h2><%= item.name %></h2>
-      <h1 class="listing-price">$<%= item.price %></h1>
-      
-      <h4>Desctiption: </h4>
+      <h2><%= item.name %> <h2 class="sold-text">SOLD</h2></h2>
+      <h1>$<%= item.price %></h1>
       <p><%= item.item_desc %></p>
-      <% if(item.sold == 0) { %>
-        <% const link = "/item-purchesed?id=" + item.id; %>
-        <a href=<%= link %>><button>Buy</button></a>
-      <% } %>
+      <h3>Contact: <%= item.email %> to compleate purchase</h3>
     </div>
     
 </body>
