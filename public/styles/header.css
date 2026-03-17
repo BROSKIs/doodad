@@ -24,14 +24,14 @@ nav {
   white-space: nowrap;
 }
 
-a {
+header a {
   font-size: 2rem;
   color: white;
   text-decoration: none;
   align-items: center;
 }
 
-a:hover {
+header a:hover {
   color: #78b1ed;
 }
 
