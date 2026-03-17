@@ -12,7 +12,6 @@
     <header>
         <%- include('partials/nav') %>
     </header>
-    <h1>Item Posted!</h1>
 
     <!-- const item = {
         img: req.body.img,
@@ -21,13 +20,15 @@
         desc: req.body.desc,
         timestamp: new Date()
     } -->
-    <div>
-        <img src=<%= item.img.substring(6) %> alt="item image">
-        <p><%= item.name %></p>
-        <p><%= item.price %></p>
-        <br>
-        <p>description:</p>
-        <p><%= item.desc %></p>
+    <div class="listing">
+      <div class="showcase showcase-sold">
+        <img src=<%= item.img %> alt="main picture">
+      </div>
+      <br>
+      <h2><%= item.name %> <h2 class="published-text">PUBLISHED</h2></h2>
+      <h1>$<%= item.price %></h1>
+      <p><%= item.item_desc %></p>
+      <h3>You will be contacted by the buyer.</h3>
     </div>
 
 </body>

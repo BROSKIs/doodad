@@ -29,11 +29,19 @@ label {
   display: block;
 }
 
+
 input {
+  display: block;
   border: 1px solid lightslategrey;
   border-radius: 4px;
   width: 20rem;
   font-size: 20px;
+}
+textarea {
+  display: block;
+  max-width: 600px;
+  width: 20rem;
+  height: 5rem;
 }
 
 button {
@@ -127,9 +135,13 @@ button:hover {
 .sold-text {
   color: red;
 }
+.published-text{
+  color: green;
+}
 .showcase-sold {
   width: 50%;
 }
+
 /* feed */
 .feed {
   /* STYLE LATER */
