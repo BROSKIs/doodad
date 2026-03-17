@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     // Keeps the original filename + current date to avoid overwriting
-    cb(null, Date.now() + '-' + file.originalname)
+    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, ''))
   }
 });
 
@@ -158,7 +158,7 @@ app.post("/item-comfirmation", async (req, res)=>{
             filePath = req.file.path; 
             // get item information
             const item = req.body;
-            item.img = filePath;
+            item.img = filePath.substring(6);
 
             // SQL
             const sql = `INSERT INTO items(name, img, email, price, item_desc) VALUES (?, ?, ?, ?, ?);`;
@@ -166,7 +166,7 @@ app.post("/item-comfirmation", async (req, res)=>{
             // includes some preventative measures against null values.
             const params = [
                 item.name || '',
-                filePath || 'Pasha Fix This',
+                filePath.substring(6) || 'Pasha Fix This',
                 item.email || '',
                 item.price || '',
                 item.desc || ''
