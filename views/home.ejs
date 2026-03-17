@@ -25,7 +25,7 @@
 			<% items_feed.forEach(item =>{ %>
 			<% if(item.sold=="0") { %>
 				<% const link = "/item?id=" + item.id; %>
-			<a href=<%= link %> class="listing-tile">
+			<a class="listing-tile" href=<%= link %>>
 				<div>
 					<img src=<%= item.img %> alt="picture">
 					<h3><%= item.name %></h3>
