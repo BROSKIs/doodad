@@ -16,7 +16,7 @@ header {
   background-color: var(--primary-color);
   display: flex;
   justify-content: space-evenly;
-  padding: 1rem 0 1.5rem;
+  padding: 1rem 0;
 }
 
 .nav-img {
@@ -31,7 +31,6 @@ nav {
   gap: 10px;
   width: 70%;
   white-space: nowrap;
-  list-style: none;
 }
 
 a {
@@ -57,7 +56,6 @@ main {
   width: 60%;
   margin: auto;
 }
-
 
 .emailpass {
   display: flex;
@@ -161,8 +159,8 @@ button:hover {
 }
 /* Listing button */
 .listing a button {
-  margin-top: .2rem;
-  margin-bottom: .2rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 /* SOLD PAGE */
 .sold-text {
