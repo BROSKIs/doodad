@@ -10,11 +10,11 @@
 <body>
     <!-- Navigation Bar -->
     <header><%- include('partials/nav') %></header>
-    <form action="/item-comfirmation" method="post">
+    <form action="/item-comfirmation" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Create Item</legend>
-            <label for="img">Image Link
-                <input type="text" name="img" id="img">
+            <label for="img">Upload Image: (jpeg, png)
+                <input type="file" name="itemImage" accept="image/png, image/jpeg">
             </label>
             <label for="email">Email:
                 <input type="email" name="email" id="email">

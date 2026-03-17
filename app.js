@@ -1,7 +1,29 @@
 import express from "express"
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
+import multer from "multer";
+
+
 const app = express();
+//FILE UPLOAD SET UP 
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/') // Make sure this folder exists!
+  },
+  filename: function (req, file, cb) {
+    // Keeps the original filename + current date to avoid overwriting
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+const upload = multer({
+    storage: storage,
+    dest: 'uploads/',
+    limits: { 
+        fileSize: 5 * 1024 * 1024 // 1 MB limit
+    }
+}).single('itemImage');
 
 dotenv.config();
 
@@ -126,23 +148,33 @@ app.get("/create-item", (req, res)=>{
 
 app.post("/item-comfirmation", async (req, res)=>{
     try {
-        // get item information
-        const item = req.body;
+        let filePath; 
+        upload(req, res, async (err) => {
+        if (err instanceof multer.MulterError) {
+            return res.status(400).send("File too large! Limit is 1MB.");
+            } else if (err) {
+            return res.status(500).send("An unknown error occurred.");
+            }
+            filePath = req.file.path; 
+            // get item information
+            const item = req.body;
+            item.img = filePath;
 
-        // SQL
-        const sql = `INSERT INTO items(name, img, email, price, item_desc) VALUES (?, ?, ?, ?, ?);`;
+            // SQL
+            const sql = `INSERT INTO items(name, img, email, price, item_desc) VALUES (?, ?, ?, ?, ?);`;
 
-        // includes some preventative measures against null values.
-        const params = [
-            item.name || '',
-            item.img || '',
-            item.email || '',
-            item.price || '',
-            item.desc || ''
-        ];
+            // includes some preventative measures against null values.
+            const params = [
+                item.name || '',
+                filePath || 'Pasha Fix This',
+                item.email || '',
+                item.price || '',
+                item.desc || ''
+            ];
 
-        const result = await pool.execute(sql, params);
-        res.render("item-conf", { item: item });
+            const result = await pool.execute(sql, params);
+            res.render("item-conf", { item: item });
+        });
     } catch (err) {
         console.error('Error saving item:', err);
         res.status(500).send('Item information failed to save. Please try listing your item again.');
