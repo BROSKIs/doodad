@@ -1,3 +1,4 @@
+@import "header.css";
 * {
   box-sizing: border-box;
 }
@@ -10,46 +11,6 @@ body {
   margin: 0;
   background-color: white;
   font-family: "Segoe UI", Roboto, sans-serif;
-}
-
-header {
-  background-color: var(--primary-color);
-  display: flex;
-  justify-content: space-evenly;
-  padding: 1rem 0;
-}
-
-.nav-img {
-  width: 3rem;
-  height: 3rem;
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  gap: 10px;
-  width: 70%;
-  white-space: nowrap;
-}
-
-a {
-  font-size: 2rem;
-  color: white;
-  text-decoration: none;
-}
-
-nav ul {
-  padding: 0;
-  margin: 0;
-}
-
-nav ul a {
-  font-size: 1rem;
-}
-
-li {
-  list-style: none;
 }
 
 main {
@@ -153,7 +114,7 @@ button:hover {
   color: green;
   margin: 0 auto;
 }
-/* Margin udjustment */
+/* Margin adjustment */
 .listing h2 {
   margin: 0 auto;
 }

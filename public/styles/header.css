@@ -1,0 +1,36 @@
+header {
+  background-color: #3287e3;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+header img {
+  width: 3rem;
+  height: 3rem;
+}
+
+header a:hover img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 75%;
+  white-space: nowrap;
+}
+
+a {
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  align-items: center;
+}
+
+a:hover {
+  color: #78b1ed;
+}

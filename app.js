@@ -36,7 +36,7 @@ const PORT = 3005;
 // internal storage for contacts
 const contacts = [];
 
-//intermal storage for items
+//internal storage for items
 const items = [];
 
 // secret connection pool for secret databases
@@ -146,7 +146,7 @@ app.get("/create-item", (req, res)=>{
     res.render("create_item");
 });
 
-app.post("/item-comfirmation", async (req, res)=>{
+app.post("/item-confirmation", async (req, res)=>{
     try {
         let filePath; 
         upload(req, res, async (err) => {
@@ -197,12 +197,12 @@ app.get("/item", async (req, res)=>{
 });
 
 // sold listing
-app.get("/item-purchesed", async (req, res)=>{
+app.get("/item-purchased", async (req, res)=>{
     const id = req.query.id;
     try {
-        // mark listin as sold on the back end
-        const sqlone = 'UPDATE items SET sold = TRUE WHERE id = ' + id + ';'
-        const itemone = await pool.query(sqlone);
+        // mark listen as sold on the back end
+        const sqlOne = 'UPDATE items SET sold = TRUE WHERE id = ' + id + ';'
+        const itemOne = await pool.query(sqlOne);
         // fetch all listings with ID
         const sql = 'SELECT * FROM items WHERE id = ' + id;
         const [item] = await pool.query(sql);

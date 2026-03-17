@@ -22,10 +22,10 @@
       <h2><%= item.name %></h2>
       <h1 class="listing-price">$<%= item.price %></h1>
       
-      <h4>Desctiption: </h4>
+      <h4>Description: </h4>
       <p><%= item.item_desc %></p>
       <% if(item.sold == 0) { %>
-        <% const link = "/item-purchesed?id=" + item.id; %>
+        <% const link = "/item-purchased?id=" + item.id; %>
         <a href=<%= link %>><button>Buy</button></a>
       <% } %>
     </div>
