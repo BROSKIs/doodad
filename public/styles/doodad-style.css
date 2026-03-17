@@ -168,6 +168,9 @@ button:hover {
 .sold-text {
   color: red;
 }
+.published-text{
+  color: green;
+}
 .showcase-sold {
   width: 50%;
 }

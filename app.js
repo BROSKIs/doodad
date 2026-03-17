@@ -148,14 +148,14 @@ app.get("/create-item", (req, res)=>{
 
 app.post("/item-comfirmation", async (req, res)=>{
     try {
-        let filePath; 
+        //file UPLADER
         upload(req, res, async (err) => {
         if (err instanceof multer.MulterError) {
             return res.status(400).send("File too large! Limit is 1MB.");
             } else if (err) {
             return res.status(500).send("An unknown error occurred.");
             }
-            filePath = req.file.path; 
+            const filePath = req.file.path; 
             // get item information
             const item = req.body;
             item.img = filePath.substring(6);
@@ -166,7 +166,7 @@ app.post("/item-comfirmation", async (req, res)=>{
             // includes some preventative measures against null values.
             const params = [
                 item.name || '',
-                filePath.substring(6) || 'Pasha Fix This',
+                filePath.substring(6) || 'Pasha Fix This',//SHOULD NEVER HAPPEN IF PAGE IS PROPERLY VALDATED
                 item.email || '',
                 item.price || '',
                 item.desc || ''
