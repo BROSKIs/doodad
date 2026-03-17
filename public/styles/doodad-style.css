@@ -153,6 +153,7 @@ button:hover {
   /* STYLE LATER */
   /* MAKE IT A GRID */
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   flex: 1;
   text-decoration: none;

@@ -188,6 +188,9 @@ app.get("/item", async (req, res)=>{
         // fetch all listings with ID
         const sql = 'SELECT * FROM items WHERE id = ' + id;
         const [item] = await pool.query(sql);
+        if(typeof item[0] === "undefined"){
+            return res.status(404).send("Error 404: listing doesn't exisit");
+        }
         // render page
         res.render("item", { item: item[0] },);
     } catch (err) {
