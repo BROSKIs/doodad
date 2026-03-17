@@ -152,9 +152,9 @@ button:hover {
 .feed {
   /* STYLE LATER */
   /* MAKE IT A GRID */
-  display: flex;
+  display: grid;
   gap: 1rem;
-  flex: 1;
+  grid-template-columns: repeat(3, 1fr);
   text-decoration: none;
 }
 /* Listing Tile STYLE LATER */
@@ -164,13 +164,11 @@ button:hover {
   border-radius: 15px;
   color: black;
   text-decoration: none;
-  max-width: 33%;
 }
 .listing-tile div img {
   width: 100%;
   border-radius: 10px;
 }
-
 
 @media screen and (max-width: 760px) {
   /* Making the main 100% so it looks good on mobile */
