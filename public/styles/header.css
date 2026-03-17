@@ -34,3 +34,15 @@ a {
 a:hover {
   color: #78b1ed;
 }
+
+@media screen and (max-width: 760px) {
+  /* FIX NAVBAR mobile */
+  header nav a {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 16px;
+  }
+  header nav {
+    display: block;
+  }
+}
