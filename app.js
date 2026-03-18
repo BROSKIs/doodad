@@ -113,8 +113,15 @@ app.post("/contact-submitted", async (req, res)=>{
 })
 
 // access admin page for contacts
-app.get("/admin-contact", (req, res)=>{
-    res.render('admin-contacts', { contacts });
+app.get("/admin-contact", async (req, res)=>{
+    try {
+        const [contacts] = await pool.query('SELECT * FROM contacts ORDER BY timestamp DESC');
+        res.render('admin-contacts', { contacts });
+    }  catch (err) {
+        console.error('Error accessing support tickets:', err);
+        res.status(500).send('Error loading support tickets from contacts: ' + err.message);
+    }
+        
 });
 
 // ITEM CREATING
