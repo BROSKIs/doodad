@@ -47,10 +47,10 @@ export function validateItem(data) {
     if (data.name.trim() == "") { errors.push("Name is required."); }
 
     // If price is not a number OR price < 0, return true.
-    if (Number.isFinite(Number(data.price)) || Number(data.price) < 0) { 
+    if (!Number.isFinite(Number(data.price)) || Number(data.price) < 0) { 
         errors.push("Enter a price that is valid, and greater than or equal to 0.");
     }
-    
+
     // Empty description returns true.
     if (data.desc.trim() == "") {errors.push("Item description is required.")}
 
