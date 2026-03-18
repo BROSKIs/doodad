@@ -2,7 +2,7 @@ import express from "express"
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 import multer from "multer";
-
+import { validateContact, validateItem } from "./validate";
 
 const app = express();
 //FILE UPLOAD SET UP 
@@ -78,35 +78,6 @@ app.get("/contact", (req, res)=>{
     res.render("contact");
 });
 
-// post-sign-up page
-/*
-app.post("/new-account", async (req, res) => {
-    try {
-        // get user input
-        const user = req.body;
-        console.log('New user signed up:', user);
-
-        // SQL injection? never heard of it.
-        const sql = `INSERT INTO login(fname, lname, email, password) VALUES (?, ?, ?, ?);`;
-
-        // includes some preventative measures against null values.
-        const params = [
-            user.fname || '',
-            user.lname || '',
-            user.email || '',
-            user.pass || ''
-        ];
-
-        const result = await pool.execute(sql, params);
-        console.log('User information saved with ID:', result[0].insertId);
-        res.render("new-account", { user });
-    } catch (err) {
-        console.error('Error saving user:', err);
-        res.status(500).send('Sorry! We failed to save your information. Please try signing up again.');
-    }
-});
-*/
-
 // post-contact page
 app.post("/contact-submitted", (req, res)=>{
     const contact = {
@@ -124,22 +95,6 @@ app.post("/contact-submitted", (req, res)=>{
 app.get("/admin-contact", (req, res)=>{
     res.render('admin-contacts', { contacts });
 });
-
-// access admin page for users
-/*
-app.get("/admin-users", async (req, res)=>{
-    try {
-        // fetch all users
-        const [users] = await pool.query('SELECT * FROM login ORDER BY timestamp DESC');
-        // render page
-        res.render('admin-users', { users });
-    } catch (err) {
-        console.error('Database error:', err);
-        res.status(500).send('Error loading orders: ' + err.message);
-    }
-    
-});
-*/
 
 //ITEM CREATING
 app.get("/create-item", (req, res)=>{
