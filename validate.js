@@ -11,10 +11,12 @@ export function validateContact(data) {
     */
 
     if (data.name.trim() == "") { errors.push("Name is required."); }
-    if (data.email.trim() == "" || !valid(data.email.trim()))
+    // If the email fails validation, return true.
+    if (!valid(data.email.trim()))
         { errors.push("A valid email must be entered."); }
+    // Messages must be at least 10 characters or longer.
     if (data.message.trim().length < 10)
-        { errors.push("Please enter a message that is greater than 10 characters.")};
+        { errors.push("Please enter a message that is greater than 10 characters."); }
 
     return { isValid: errors.length === 0, errors};
 }
@@ -24,6 +26,7 @@ export function validateItem(data) {
     console.log(data);
 
     const errors = [];
+    // HTML passes price as a string, and we need it as a number.
 
     /*
     itemImage (how do i verify this?)
@@ -33,8 +36,15 @@ export function validateItem(data) {
     desc (needs description?)
     */
 
-
-
+    // If the email fails validation, return true.
+    if (!valid(data.email.trim()))
+        { errors.push("A valid email must be entered."); }
+    if (data.name.trim() == "") { errors.push("Name is required."); }
+    // If price is not a number OR price < 0, return true.
+    if (Number.isFinite(Number(data.price)) || Number(data.price) < 0) { 
+        errors.push("Enter a price that is valid, and greater than or equal to 0.");
+    }
+    if (data.desc.trim() == "") {errors.push("Item description is required.")}
 
     return { isValid: errors.length === 0, errors};
 }
