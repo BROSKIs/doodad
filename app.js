@@ -78,17 +78,38 @@ app.get("/contact", (req, res)=>{
     res.render("contact");
 });
 
-// post-contact page
-app.post("/contact-submitted", (req, res)=>{
-    const contact = {
-        name: req.body.name,
-        email: req.body.email,
-        message: req.body.message
-    };
+// post-contact page (submission)
+app.post("/contact-submitted", async (req, res)=>{
+    try {
+        // validation function
+        const contact = req.body;
+        const valid = validateContact(contact);
 
-    contacts.push(contact);
+        // throws user back to contact page if inputs are invalid
+        if (!valid.isValaid) {
+            console.log(valid);
+            res.render('contact', {errors: valid.errors});
+            return;
+        }
+    
+    console.log("New support ticket submitted", contact);
 
-    res.render("conf-contact");
+    const sql = `INSERT INTO contacts(name, email, message) VALUES (?, ?, ?);`;
+    
+    const params = [
+        contact.name || '',
+        contact.email || '',
+        contact.message || ''
+    ];
+
+    const result = await pool.execute(sql, params);
+    console.log('Saved ticket with ID:', result[0].insertId);
+
+    res.render('conf-contact');
+    } catch (err) {
+        console.error('Error submitting support ticket:', err);
+        res.status(500).send('Oops! We\'re unable to save your support ticket. Please try again.');
+    }
 })
 
 // access admin page for contacts
@@ -96,11 +117,12 @@ app.get("/admin-contact", (req, res)=>{
     res.render('admin-contacts', { contacts });
 });
 
-//ITEM CREATING
+// ITEM CREATING
 app.get("/create-item", (req, res)=>{
     res.render("create_item");
 });
 
+// item submission
 app.post("/item-confirmation", async (req, res)=>{
     try {
         //file UPLOADER
