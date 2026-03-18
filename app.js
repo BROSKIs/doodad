@@ -142,6 +142,17 @@ app.post("/item-confirmation", async (req, res)=>{
             const filePath = req.file.path; 
             // get item information
             const item = req.body;
+
+            const valid = validateItem(item);
+
+            if (!valid.isValid) {
+                console.log(valid);
+                res.render('create_item', {errors: valid.errors});
+                return;
+            }
+
+            console.log('New item listed created:', item);
+
             item.img = filePath.substring(6);
 
             // SQL
