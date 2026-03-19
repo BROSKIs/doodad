@@ -2,7 +2,7 @@ import express from "express"
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 import multer from "multer";
-
+import { validateContact, validateItem } from "./validate.js";
 
 const app = express();
 //FILE UPLOAD SET UP 
@@ -78,74 +78,58 @@ app.get("/contact", (req, res)=>{
     res.render("contact");
 });
 
-// post-sign-up page
-/*
-app.post("/new-account", async (req, res) => {
+// post-contact page (submission)
+app.post("/contact-submitted", async (req, res)=>{
     try {
-        // get user input
-        const user = req.body;
-        console.log('New user signed up:', user);
+        // validation function
+        const contact = req.body;
+        let valid = validateContact(contact);
 
-        // SQL injection? never heard of it.
-        const sql = `INSERT INTO login(fname, lname, email, password) VALUES (?, ?, ?, ?);`;
+        // throws user back to contact page if inputs are invalid
+        if (!valid.isValid) {
+            console.log(valid);
+            res.render('contact', {errors: valid.errors});
+            return;
+        }
+    
+    console.log("New support ticket submitted", contact);
 
-        // includes some preventative measures against null values.
-        const params = [
-            user.fname || '',
-            user.lname || '',
-            user.email || '',
-            user.pass || ''
-        ];
+    const sql = `INSERT INTO contacts(name, email, message) VALUES (?, ?, ?);`;
+    
+    const params = [
+        contact.name || '',
+        contact.email || '',
+        contact.message || ''
+    ];
 
-        const result = await pool.execute(sql, params);
-        console.log('User information saved with ID:', result[0].insertId);
-        res.render("new-account", { user });
+    const result = await pool.execute(sql, params);
+    console.log('Saved ticket with ID:', result[0].insertId);
+
+    res.render('conf-contact');
     } catch (err) {
-        console.error('Error saving user:', err);
-        res.status(500).send('Sorry! We failed to save your information. Please try signing up again.');
+        console.error('Error submitting support ticket:', err);
+        res.status(500).send('Oops! We\'re unable to save your support ticket. Please try again.');
     }
-});
-*/
-
-// post-contact page
-app.post("/contact-submitted", (req, res)=>{
-    const contact = {
-        name: req.body.name,
-        email: req.body.email,
-        message: req.body.message
-    };
-
-    contacts.push(contact);
-
-    res.render("conf-contact");
 })
 
 // access admin page for contacts
-app.get("/admin-contact", (req, res)=>{
-    res.render('admin-contacts', { contacts });
-});
-
-// access admin page for users
-/*
-app.get("/admin-users", async (req, res)=>{
+app.get("/admin-contact", async (req, res)=>{
     try {
-        // fetch all users
-        const [users] = await pool.query('SELECT * FROM login ORDER BY timestamp DESC');
-        // render page
-        res.render('admin-users', { users });
-    } catch (err) {
-        console.error('Database error:', err);
-        res.status(500).send('Error loading orders: ' + err.message);
+        const [contacts] = await pool.query('SELECT * FROM contacts ORDER BY timestamp DESC');
+        res.render('admin-contacts', { contacts });
+    }  catch (err) {
+        console.error('Error accessing support tickets:', err);
+        res.status(500).send('Error loading support tickets from contacts: ' + err.message);
     }
-    
+        
 });
-*/
 
-//ITEM CREATING
+// ITEM CREATING
 app.get("/create-item", (req, res)=>{
     res.render("create_item");
 });
 
+// item submission
 app.post("/item-confirmation", async (req, res)=>{
     try {
         //file UPLOADER
@@ -158,6 +142,17 @@ app.post("/item-confirmation", async (req, res)=>{
             const filePath = req.file.path; 
             // get item information
             const item = req.body;
+
+            const valid = validateItem(item);
+            
+            if (!valid.isValid) {
+                console.log("Not valid: ",valid);
+                res.render('create_item', {errors: valid.errors});
+                return;
+            }
+
+            console.log('New item listed created:', item);
+
             item.img = filePath.substring(6);
 
             // SQL

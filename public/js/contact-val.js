@@ -1,7 +1,7 @@
 document.getElementById("contact-us-form").onsubmit = validate;
 
 function validate(){
-    isValid = true;
+    let isValid = true;
     clearErrors();
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();

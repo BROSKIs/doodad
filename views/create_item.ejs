@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="styles/doodad-style.css">
     <title>Doodads - Post Item</title>
+    <script src="js/item-val.js" defer></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -16,16 +16,16 @@
             <label for="img">Upload Image: (jpeg, png)
                 <input type="file" name="itemImage" accept="image/png, image/jpeg">
             </label>
-            <label for="email">Email:
+            <label for="email">Email: <span class="err" id="email-err">Please enter your email.</span>
                 <input type="email" name="email" id="email">
             </label>
-            <label for="name">Name:
+            <label for="name">Name: <span class="err" id="name-err">Please enter your name.</span>
                 <input type="text" name="name" id="name">
             </label>
-            <label for="price">Price:
+            <label for="price">Price: <span class="err" id="price-err">Please enter a valid price.</span>
                 <input type="number" name="price" id="price" step="any">
             </label>
-            <label for="desc">Description:
+            <label for="desc">Description: <span class="err" id="desc-err">Please enter a description.</span>
                 <textarea name="desc" id="desc"></textarea>
             </label>
         </fieldset>
