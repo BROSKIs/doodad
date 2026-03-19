@@ -55,14 +55,7 @@ export function validateItem(data) {
     // Empty description returns true.
     if (data.desc.trim() == "") {errors.push("Item description is required.")}
 
-    const validated = {
-        isValid: errors.length === 0,
-        errors: errors
-    }
-
-    console.log("Validated is: ", validated);
-
-    return { validated };
+    return { isValid: errors.length == 0, errors: errors };
 }
 
 // function to validate emails. Must include "@ and ."
