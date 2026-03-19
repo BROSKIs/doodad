@@ -86,7 +86,7 @@ app.post("/contact-submitted", async (req, res)=>{
         const valid = validateContact(contact);
 
         // throws user back to contact page if inputs are invalid
-        if (!valid.isValaid) {
+        if (!valid.isValid) {
             console.log(valid);
             res.render('contact', {errors: valid.errors});
             return;
