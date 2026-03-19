@@ -18,10 +18,8 @@ export function validateContact(data) {
         { errors.push("A valid email must be entered."); }
 
     // Messages must be at least 10 characters or longer.
-    // if (data.message.trim().length < 10)
-    //     { errors.push("Please enter a message that is greater than 10 characters."); }
-    //THIS WAS HOLDING BACK FROM SUBMITTING ANY FORMS FOR CONTACTS
-    // WE REALLY NEED TO VALIDATE MESSAGE
+    if (data.message.trim() === "") { errors.push("Please enter a valid message."); }
+    
     return { isValid: errors.length === 0, errors};
 }
 
