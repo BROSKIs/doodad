@@ -2,7 +2,7 @@ import express from "express"
 import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 import multer from "multer";
-import { validateContact, validateItem } from "./validate";
+import { validateContact, validateItem } from "./validate.js";
 
 const app = express();
 //FILE UPLOAD SET UP 
