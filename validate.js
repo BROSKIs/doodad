@@ -30,13 +30,7 @@ export function validateItem(data) {
     const errors = [];
     // HTML passes price as a string, and we need it as a number.
 
-    /*
-    itemImage (how do i verify this?)
-    email
-    name
-    price
-    desc (needs description?)
-    */
+    
 
     // If the email fails validation, return true.
     if (!valid(data.email.trim()))
