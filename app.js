@@ -134,13 +134,6 @@ app.post("/item-confirmation", async (req, res)=>{
     try {
         //file UPLOADER
         upload(req, res, async (err) => {
-        if (err instanceof multer.MulterError) {
-            return res.status(400).send("File too large! Limit is 1MB.");
-            } else if (err) {
-            return res.status(500).send("An unknown error occurred.");
-            }
-            const filePath = req.file.path; 
-            // get item information
             const item = req.body;
 
             const valid = validateItem(item);
@@ -150,6 +143,15 @@ app.post("/item-confirmation", async (req, res)=>{
                 res.render('create_item', {errors: valid.errors});
                 return;
             }
+
+        if (err instanceof multer.MulterError) {
+            return res.status(400).send("File too large! Limit is 1MB.");
+            } else if (err) {
+            return res.status(500).send("An unknown error occurred.");
+            }
+            const filePath = req.file.path; 
+            // get item information
+           
 
             console.log('New item listed created:', item);
 

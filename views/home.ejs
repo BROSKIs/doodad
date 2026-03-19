@@ -19,7 +19,7 @@
 	<!-- FEED -->
 	<!-- Take out the inline styles later -->
 	<div>
-		<h1>Listings:</h1>
+		<h2>Listings:</h2>
 		<!-- FOR PASHA: to finish styling listing tiles for feed -->
 		<div class="feed">
 			<% items_feed.forEach(item =>{ %>
@@ -42,7 +42,7 @@
 				<a style="color: black; display: block;" href=<%= link %>> <%= item.name %></a>
 			<% }}); %>
 		</ul> -->
-		<h1>Sold</h1>
+		<h2>Sold</h2>
 		<div class="feed">
 			<% items_feed.forEach(item =>{ %>
 			<% if(item.sold=="1") { %>
