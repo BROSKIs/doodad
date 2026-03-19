@@ -83,7 +83,7 @@ app.post("/contact-submitted", async (req, res)=>{
     try {
         // validation function
         const contact = req.body;
-        const valid = validateContact(contact);
+        let valid = validateContact(contact);
 
         // throws user back to contact page if inputs are invalid
         if (!valid.isValid) {
@@ -144,9 +144,9 @@ app.post("/item-confirmation", async (req, res)=>{
             const item = req.body;
 
             const valid = validateItem(item);
-
+            
             if (!valid.isValid) {
-                console.log(valid);
+                console.log("Not valid: ",valid);
                 res.render('create_item', {errors: valid.errors});
                 return;
             }
