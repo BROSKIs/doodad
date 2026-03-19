@@ -140,7 +140,7 @@ app.post("/item-confirmation", async (req, res)=>{
             
             if (!valid.isValid) {
                 console.log("Not valid: ",valid);
-                res.render('create_item', {errors: valid.errors});
+                res.render('create_item', { errors: valid.errors });
                 return;
             }
 

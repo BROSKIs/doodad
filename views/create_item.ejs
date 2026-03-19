@@ -11,6 +11,13 @@
     <!-- Navigation Bar -->
     <header><%- include('partials/nav') %></header>
     <form id="itemCreate" action="/item-confirmation" method="post" enctype="multipart/form-data">
+
+        <% if(!(typeof errors === "undefined")) { %>
+            <p>Errors:</p>
+            <% errors.forEach(error => { %>
+                <p><%= error %></p>    
+            <% }) %>
+        <% } %>
         <fieldset>
             <legend>Create Item</legend>
             <label for="img">Upload Image: (jpeg, png)
