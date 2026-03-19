@@ -21,7 +21,7 @@ function validate() {
     }
 
     // if price is below zero
-    if (price < 0) {
+    if (price < 0 || price == "") {
         isValid = false;
         document.getElementById("price-err").style.display = "inline-block";
     }
