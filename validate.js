@@ -17,7 +17,7 @@ export function validateContact(data) {
     if (!valid(data.email.trim()))
         { errors.push("A valid email must be entered."); }
 
-    // Messages must be at least 10 characters or longer.
+    // Messages must not be empty
     if (data.message.trim() === "") { errors.push("Please enter a valid message."); }
     
     return { isValid: errors.length === 0, errors};
